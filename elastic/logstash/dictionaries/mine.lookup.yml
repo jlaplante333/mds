@@ -1,0 +1,3 @@
+9c1b63b6-ccfb-48b0-be85-3cb3c5d1a276: '{"name": "test1", "location": { "lat" :52.6565, "lon": 124.2342 } }'
+f89b3ea8-41a1-486f-9b93-33e777c81551: '{"name": "test2", "location": { "lat" :53.6565, "lon": 125.2342 } }'
+71ea9cdb-3db2-4431-a545-4ce14f661651: '{"name": "test3", "location": { "lat" :54.6565, "lon": 126.2342 } }'
