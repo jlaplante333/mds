@@ -1,0 +1,696 @@
+{
+    "order": 1,
+    "index_patterns": [
+        "mds-nginx-access*"
+    ],
+    "settings": {
+        "index": {
+            "mapping": {
+                "total_fields": {
+                    "limit": "10000"
+                }
+            },
+            "refresh_interval": "5s",
+            "number_of_routing_shards": "30",
+            "number_of_shards": "3"
+        }
+    },
+    "mappings": {
+        "doc": {
+            "doc": {
+                "dynamic_templates": [
+                    {
+                        "fields": {
+                            "path_match": "fields.*",
+                            "mapping": {
+                                "type": "keyword"
+                            },
+                            "match_mapping_type": "string"
+                        }
+                    },
+                    {
+                        "strings_as_keyword": {
+                            "match_mapping_type": "string",
+                            "mapping": {
+                                "ignore_above": 1024,
+                                "type": "keyword"
+                            }
+                        }
+                    }
+                ],
+                "properties": {
+                    "@timestamp": {
+                        "type": "date"
+                    },
+                    "@version": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 1024
+                            }
+                        }
+                    },
+                    "data": {
+                        "properties": {
+                            "document_manager_guid": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "filename": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "latitude": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "longitude": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "mine_guid": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "mine_region": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "mine_status": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "name": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "note": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "tsf_name": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "host": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 1024
+                            }
+                        }
+                    },
+                    "jwt_data": {
+                        "properties": {
+                            "acr": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "allowed-origins": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "aud": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "auth_time": {
+                                "type": "long"
+                            },
+                            "azp": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "email": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "exp": {
+                                "type": "long"
+                            },
+                            "iat": {
+                                "type": "long"
+                            },
+                            "iss": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "jti": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "nbf": {
+                                "type": "long"
+                            },
+                            "nonce": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "preferred_username": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "realm_access": {
+                                "properties": {
+                                    "roles": {
+                                        "type": "text",
+                                        "fields": {
+                                            "keyword": {
+                                                "type": "keyword",
+                                                "ignore_above": 1024
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "resource_access": {
+                                "properties": {
+                                    "account": {
+                                        "properties": {
+                                            "roles": {
+                                                "type": "text",
+                                                "fields": {
+                                                    "keyword": {
+                                                        "type": "keyword",
+                                                        "ignore_above": 1024
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "session_state": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "sub": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "typ": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "log": {
+                        "properties": {
+                            "type": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "mine": {
+                        "properties": {
+                            "id": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "nginx": {
+                        "properties": {
+                            "access": {
+                                "properties": {
+                                    "body_sent": {
+                                        "properties": {
+                                            "bytes": {
+                                                "type": "text",
+                                                "fields": {
+                                                    "keyword": {
+                                                        "type": "keyword",
+                                                        "ignore_above": 1024
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "client_ip": {
+                                        "type": "text",
+                                        "fields": {
+                                            "keyword": {
+                                                "type": "keyword",
+                                                "ignore_above": 1024
+                                            }
+                                        }
+                                    },
+                                    "geoip": {
+                                        "properties": {
+                                            "continent_code": {
+                                                "type": "text",
+                                                "fields": {
+                                                    "keyword": {
+                                                        "type": "keyword",
+                                                        "ignore_above": 1024
+                                                    }
+                                                }
+                                            },
+                                            "country_code2": {
+                                                "type": "text",
+                                                "fields": {
+                                                    "keyword": {
+                                                        "type": "keyword",
+                                                        "ignore_above": 1024
+                                                    }
+                                                }
+                                            },
+                                            "country_code3": {
+                                                "type": "text",
+                                                "fields": {
+                                                    "keyword": {
+                                                        "type": "keyword",
+                                                        "ignore_above": 1024
+                                                    }
+                                                }
+                                            },
+                                            "country_name": {
+                                                "type": "text",
+                                                "fields": {
+                                                    "keyword": {
+                                                        "type": "keyword",
+                                                        "ignore_above": 1024
+                                                    }
+                                                }
+                                            },
+                                            "ip": {
+                                                "type": "text",
+                                                "fields": {
+                                                    "keyword": {
+                                                        "type": "keyword",
+                                                        "ignore_above": 1024
+                                                    }
+                                                }
+                                            },
+                                            "latitude": {
+                                                "type": "float"
+                                            },
+                                            "location": {
+                                                "type": "geo_point"
+                                            },
+                                            "longitude": {
+                                                "type": "float"
+                                            }
+                                        }
+                                    },
+                                    "http_version": {
+                                        "type": "text",
+                                        "fields": {
+                                            "keyword": {
+                                                "type": "keyword",
+                                                "ignore_above": 1024
+                                            }
+                                        }
+                                    },
+                                    "method": {
+                                        "type": "text",
+                                        "fields": {
+                                            "keyword": {
+                                                "type": "keyword",
+                                                "ignore_above": 1024
+                                            }
+                                        }
+                                    },
+                                    "payload": {
+                                        "type": "text",
+                                        "fields": {
+                                            "keyword": {
+                                                "type": "keyword",
+                                                "ignore_above": 1024
+                                            }
+                                        }
+                                    },
+                                    "referrer": {
+                                        "type": "text",
+                                        "fields": {
+                                            "keyword": {
+                                                "type": "keyword",
+                                                "ignore_above": 1024
+                                            }
+                                        }
+                                    },
+                                    "remote_ip": {
+                                        "type": "text",
+                                        "fields": {
+                                            "keyword": {
+                                                "type": "keyword",
+                                                "ignore_above": 1024
+                                            }
+                                        }
+                                    },
+                                    "response_code": {
+                                        "type": "text",
+                                        "fields": {
+                                            "keyword": {
+                                                "type": "keyword",
+                                                "ignore_above": 1024
+                                            }
+                                        }
+                                    },
+                                    "server": {
+                                        "properties": {
+                                            "geoip": {
+                                                "properties": {
+                                                    "city_name": {
+                                                        "type": "text",
+                                                        "fields": {
+                                                            "keyword": {
+                                                                "type": "keyword",
+                                                                "ignore_above": 1024
+                                                            }
+                                                        }
+                                                    },
+                                                    "continent_code": {
+                                                        "type": "text",
+                                                        "fields": {
+                                                            "keyword": {
+                                                                "type": "keyword",
+                                                                "ignore_above": 1024
+                                                            }
+                                                        }
+                                                    },
+                                                    "country_code2": {
+                                                        "type": "text",
+                                                        "fields": {
+                                                            "keyword": {
+                                                                "type": "keyword",
+                                                                "ignore_above": 1024
+                                                            }
+                                                        }
+                                                    },
+                                                    "country_code3": {
+                                                        "type": "text",
+                                                        "fields": {
+                                                            "keyword": {
+                                                                "type": "keyword",
+                                                                "ignore_above": 1024
+                                                            }
+                                                        }
+                                                    },
+                                                    "country_name": {
+                                                        "type": "text",
+                                                        "fields": {
+                                                            "keyword": {
+                                                                "type": "keyword",
+                                                                "ignore_above": 1024
+                                                            }
+                                                        }
+                                                    },
+                                                    "ip": {
+                                                        "type": "text",
+                                                        "fields": {
+                                                            "keyword": {
+                                                                "type": "keyword",
+                                                                "ignore_above": 1024
+                                                            }
+                                                        }
+                                                    },
+                                                    "latitude": {
+                                                        "type": "float"
+                                                    },
+                                                    "location": {
+                                                        "type": "geo_point"
+                                                    },
+                                                    "longitude": {
+                                                        "type": "float"
+                                                    },
+                                                    "postal_code": {
+                                                        "type": "text",
+                                                        "fields": {
+                                                            "keyword": {
+                                                                "type": "keyword",
+                                                                "ignore_above": 1024
+                                                            }
+                                                        }
+                                                    },
+                                                    "region_code": {
+                                                        "type": "text",
+                                                        "fields": {
+                                                            "keyword": {
+                                                                "type": "keyword",
+                                                                "ignore_above": 1024
+                                                            }
+                                                        }
+                                                    },
+                                                    "region_name": {
+                                                        "type": "text",
+                                                        "fields": {
+                                                            "keyword": {
+                                                                "type": "keyword",
+                                                                "ignore_above": 1024
+                                                            }
+                                                        }
+                                                    },
+                                                    "timezone": {
+                                                        "type": "text",
+                                                        "fields": {
+                                                            "keyword": {
+                                                                "type": "keyword",
+                                                                "ignore_above": 1024
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "type": "text",
+                                        "fields": {
+                                            "keyword": {
+                                                "type": "keyword",
+                                                "ignore_above": 1024
+                                            }
+                                        }
+                                    },
+                                    "user_agent": {
+                                        "properties": {
+                                            "build": {
+                                                "type": "text",
+                                                "fields": {
+                                                    "keyword": {
+                                                        "type": "keyword",
+                                                        "ignore_above": 1024
+                                                    }
+                                                }
+                                            },
+                                            "device": {
+                                                "type": "text",
+                                                "fields": {
+                                                    "keyword": {
+                                                        "type": "keyword",
+                                                        "ignore_above": 1024
+                                                    }
+                                                }
+                                            },
+                                            "major": {
+                                                "type": "text",
+                                                "fields": {
+                                                    "keyword": {
+                                                        "type": "keyword",
+                                                        "ignore_above": 1024
+                                                    }
+                                                }
+                                            },
+                                            "minor": {
+                                                "type": "text",
+                                                "fields": {
+                                                    "keyword": {
+                                                        "type": "keyword",
+                                                        "ignore_above": 1024
+                                                    }
+                                                }
+                                            },
+                                            "name": {
+                                                "type": "text",
+                                                "fields": {
+                                                    "keyword": {
+                                                        "type": "keyword",
+                                                        "ignore_above": 1024
+                                                    }
+                                                }
+                                            },
+                                            "os": {
+                                                "type": "text",
+                                                "fields": {
+                                                    "keyword": {
+                                                        "type": "keyword",
+                                                        "ignore_above": 1024
+                                                    }
+                                                }
+                                            },
+                                            "os_name": {
+                                                "type": "text",
+                                                "fields": {
+                                                    "keyword": {
+                                                        "type": "keyword",
+                                                        "ignore_above": 1024
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "operation": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 1024
+                            }
+                        }
+                    },
+                    "path": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 1024
+                            }
+                        }
+                    },
+                    "read_timestamp": {
+                        "type": "date"
+                    },
+                    "tags": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 1024
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
