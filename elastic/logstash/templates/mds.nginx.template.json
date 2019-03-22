@@ -1,7 +1,7 @@
 {
     "order": 1,
     "index_patterns": [
-        "mds-nginx-access*"
+        "mds-nginx-access-*"
     ],
     "settings": {
         "index": {
@@ -57,11 +57,11 @@
                                 "ignore_above": 1024
                             },
                             "latitude": {
-                                "type": "long",
+                                "type": "keyword",
                                 "ignore_above": 1024
                             },
                             "longitude": {
-                                "type": "long",
+                                "type": "keyword",
                                 "ignore_above": 1024
                             },
                             "mine_guid": {
@@ -147,13 +147,8 @@
                             "realm_access": {
                                 "properties": {
                                     "roles": {
-                                        "type": "text",
-                                        "fields": {
-                                            "keyword": {
-                                                "type": "keyword",
-                                                "ignore_above": 1024
-                                            }
-                                        }
+                                        "type": "keyword",
+                                        "ignore_above": 1024
                                     }
                                 }
                             },
@@ -183,6 +178,10 @@
                             }
                         }
                     },
+                    "message": {
+                        "type": "text",
+                        "norms": false
+                    },
                     "log": {
                         "properties": {
                             "type": {
@@ -194,6 +193,17 @@
                     "mine": {
                         "properties": {
                             "id": {
+                                "type": "keyword",
+                                "ignore_above": 1024
+                            }
+                        }
+                    },
+                    "mine_data": {
+                        "properties": {
+                            "location": {
+                                "type": "geo_point"
+                            },
+                            "name": {
                                 "type": "keyword",
                                 "ignore_above": 1024
                             }
@@ -441,8 +451,7 @@
                         "ignore_above": 1024
                     },
                     "path": {
-                        "type": "text",
-                        "ignore_above": 1024
+                        "type": "text"
                     },
                     "read_timestamp": {
                         "type": "date"
