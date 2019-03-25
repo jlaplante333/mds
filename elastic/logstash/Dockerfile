@@ -15,3 +15,4 @@ ADD templates /usr/share/logstash/templates
 
 ADD pipeline/ /usr/share/logstash/pipeline/
 ADD config/ /usr/share/logstash/config/
+

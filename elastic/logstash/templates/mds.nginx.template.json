@@ -206,6 +206,14 @@
                             "name": {
                                 "type": "keyword",
                                 "ignore_above": 1024
+                            },
+                            "numero": {
+                                "type": "keyword",
+                                "ignore_above": 1024
+                            },
+                            "region": {
+                                "type": "keyword",
+                                "ignore_above": 1024
                             }
                         }
                     },
