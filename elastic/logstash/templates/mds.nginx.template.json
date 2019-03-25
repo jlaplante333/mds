@@ -217,6 +217,14 @@
                             }
                         }
                     },
+                    "mds": {
+                        "properties": {
+                            "group": {
+                                "type": "keyword",
+                                "ignore_above": 1024
+                            }
+                        }
+                    },
                     "nginx": {
                         "properties": {
                             "access": {
